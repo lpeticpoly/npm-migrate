@@ -1,13 +1,16 @@
 const fs = require('graceful-fs')
 const async = require('async')
 const curry = require('lodash.curry')
+const { prefix, moduleName } = require('./settings')
 
 const updatePackageJson = function (newRegistry, folder, callback) {
 
     const packjson = folder + '/package.json'
 
     let packageJsonObject = require(packjson)
-    packageJsonObject.publishConfig = { registry: newRegistry }
+    packageJsonObject.publishConfig[prefix + ":registry"] = newRegistry
+    delete packageJsonObject.publishConfig.registry
+    packageJsonObject.name = prefix + "/" + moduleName
 
     fs.writeFile(packjson, JSON.stringify(packageJsonObject), (err) => {
         if (err) return callback(err);

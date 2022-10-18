@@ -1,0 +1,9 @@
+stages:
+  - tests
+
+test:
+  image: laox
+  stage: tests
+  script:
+    - cp .npmrc ~/.npmrc
+    - node app.js

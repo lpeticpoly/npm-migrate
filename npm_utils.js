@@ -2,6 +2,7 @@ const npm = require('npm')
 const mv = require('mv')
 const curry = require('lodash.curry')
 const async = require('async')
+const fs = require('fs');
 
 const publishAsync = function (registry, path, callback) {
 
@@ -100,7 +101,10 @@ module.exports.getVersionList = function (moduleName, oldRegistry, newRegistry) 
 
                 return getRemainingVersions(moduleName, oldRegistry, newRegistry, oldRegistryVersions)
                     .then((remainingVersions) => {
-                        resolve(remainingVersions);
+                        let rawdata = fs.readFileSync('versions.json');
+                        let versions = JSON.parse(rawdata);
+                        console.log("versions", [versions[moduleName]])
+                        resolve(versions[moduleName]); // remainingVersions
                     });
             })
         })
