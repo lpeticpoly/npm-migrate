@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/necccc/npm-migrate#readme",
   "dependencies": {
+    "@lucian.petic/holysheets": "^4.17.3",
     "async": "2.1.4",
     "compressing": "1.1.0",
     "graceful-fs": "4.1.11",

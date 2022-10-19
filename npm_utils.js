@@ -104,7 +104,7 @@ module.exports.getVersionList = function (moduleName, oldRegistry, newRegistry) 
                         let rawdata = fs.readFileSync('versions.json');
                         let versions = JSON.parse(rawdata);
                         console.log("versions", [versions[moduleName]])
-                        resolve(versions[moduleName]); // remainingVersions
+                        resolve(versions[moduleName]);
                     });
             })
         })

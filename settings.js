@@ -1,4 +1,4 @@
 module.exports = {
-    moduleName: "",
-    prefix: "@blue-common"
+    moduleName: "bluetils-common-ui",
+    prefix: "@lucian.petic"
 }
