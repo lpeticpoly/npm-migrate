@@ -17,9 +17,18 @@ const updatePackageJson = function (newRegistry, folder, callback) {
     packageJsonObject.name = prefix + "/" + moduleName
 
     if(packageJsonObject.dependencies != undefined){
-        array = ["angular-gettext", "bootstrap-datepicker", "cassets", "vanitils", "albillo-registration-ui", "alacarte", "angutils", "boards-registration", "bornetobe-ui", "bulot", "cleaningmap-ui", "dynamic-scheduler", "filio-ui", "pachavas-ui", "holysheets", "lookcoco", "oook-ui", "palettone-ui", "sales-ui", "walldo", "tocsin"]
+        array = ["cassets", "vanitils", "albillo-registration-ui", "alacarte", "angutils", "boards-registration", "bornetobe-ui", "bulot", "cleaningmap-ui", "dynamic-scheduler", "filio-ui", "pachavas-ui", "holysheets", "lookcoco", "oook-ui", "palettone-ui", "sales-ui", "walldo", "tocsin"]
         array.forEach(item => {
             if (packageJsonObject.dependencies[item]){
+                packageJsonObject.dependencies[prefix + "/" + item] = packageJsonObject.dependencies[item]
+                delete packageJsonObject.dependencies[item]
+            }
+        })
+
+        // prefix is changing only of versions ends with -polyconseil
+        array = ["angular-gettext", "bootstrap-datepicker", "bootstrap-datetime-picker"]
+        array.forEach(item => {
+            if (packageJsonObject.dependencies[item].endsWith("-polyconseil")){
                 packageJsonObject.dependencies[prefix + "/" + item] = packageJsonObject.dependencies[item]
                 delete packageJsonObject.dependencies[item]
             }

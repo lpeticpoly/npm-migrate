@@ -11,4 +11,4 @@ test:
 d:
   extends: test
   script:
-    - npm i @lucian.petic/holysheets
+    - npm i @lucian.petic/bluetils-common-ui
